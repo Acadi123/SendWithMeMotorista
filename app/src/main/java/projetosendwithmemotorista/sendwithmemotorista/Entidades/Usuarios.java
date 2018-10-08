@@ -7,7 +7,7 @@ public class Usuarios {
     private String senha;
     private String nome;
     private String sobrenome;
-    private String nascimento;
+    private String datanascimento;
     private String sexo;
 
     public Usuarios() {
@@ -54,11 +54,11 @@ public class Usuarios {
     }
 
     public String getNascimento() {
-        return nascimento;
+        return datanascimento;
     }
 
     public void setNascimento(String nascimento) {
-        this.nascimento = nascimento;
+        this.datanascimento = nascimento;
     }
 
     public String getSexo() {
