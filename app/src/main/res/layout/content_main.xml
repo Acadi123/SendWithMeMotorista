@@ -13,23 +13,17 @@
     tools:context=".Activity.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:id="@+id/txtTitulo"
-        android:gravity="center"
-        android:text="Página Inicial"
-        android:layout_height="wrap_content"
-        android:textSize="25sp"/>
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="87dp"
+        android:layout_height="85dp"
         android:layout_marginTop="20dp"
-        android:src="@mipmap/logo" />
+        android:src="@mipmap/adicionar" />
+
     <Button
         android:id="@+id/btnFazerLogin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="fazer login"/>
+        android:layout_height="48dp"
+        android:text="fazer login" />
 
 </LinearLayout>
