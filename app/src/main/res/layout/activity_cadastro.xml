@@ -18,38 +18,45 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/edtCardNome"
+                android:id="@+id/edtCadNome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nome"
                 android:inputType="textCapCharacters"/>
 
             <EditText
-                android:id="@+id/edtCardSobrenome"
+                android:id="@+id/edtCadSobrenome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Sobrenome"
                 android:inputType="textCapCharacters"/>
 
             <EditText
-                android:id="@+id/edtCardDataNascimento"
+                android:id="@+id/edtCadDataNascimento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Data Nascimento"
                 android:inputType="date"/>
 
             <EditText
-                android:id="@+id/edtCardEmail"
+                android:id="@+id/edtCadEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="E-mail"
                 android:inputType="textEmailAddress"/>
 
             <EditText
-                android:id="@+id/edtCardSenha"
+                android:id="@+id/edtCadSenha"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Senha"
+                android:inputType="textPassword"/>
+
+            <EditText
+                android:id="@+id/edtCadConfirmarSenha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Confirma Senha"
                 android:inputType="textPassword"/>
 
             <RadioGroup
