@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import projetosendwithmemotorista.sendwithmemotorista.Entidades.Usuarios;
 import projetosendwithmemotorista.sendwithmemotorista.R;
 
@@ -23,6 +25,7 @@ public class CadastroActivity extends AppCompatActivity {
     private RadioButton rbFeminino;
     private Button btnSalvar;
     private Usuarios usuarios;
+    private FirebaseAuth autenticacao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,5 +66,9 @@ public class CadastroActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void cadastrarUsuario(){
+        
     }
 }
