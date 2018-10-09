@@ -1,5 +1,13 @@
 package projetosendwithmemotorista.sendwithmemotorista.Entidades;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Exclude;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import projetosendwithmemotorista.sendwithmemotorista.DAO.ConfiguracaoFirebase;
+
 public class Usuarios {
 
     private String id;
@@ -11,6 +19,27 @@ public class Usuarios {
     private String sexo;
 
     public Usuarios() {
+    }
+
+    public void salvar(){
+        DatabaseReference referenciaFirebase = ConfiguracaoFirebase.getReferenceFirebase();
+        referenciaFirebase.child("usuario").child(String.valueOf(getId())).setValue(this);
+    }
+
+    @Exclude
+
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> hashMapUsuario = new HashMap<>();
+
+        hashMapUsuario.put("id", getId());
+        hashMapUsuario.put("email", getEmail());
+        hashMapUsuario.put("senha", getSenha());
+        hashMapUsuario.put("nome", getNome());
+        hashMapUsuario.put("sobrenome", getSobrenome());
+        hashMapUsuario.put("datanascimento", getNascimento());
+        hashMapUsuario.put("sexo", getSexo());
+
+        return hashMapUsuario;
     }
 
     public String getId() {
