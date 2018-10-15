@@ -13,24 +13,27 @@
     tools:context=".Activity.LoginActivity">
 
     <EditText
+        android:background="@drawable/edit_text_style"
         android:id="@+id/edtEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="E-mail"
+        android:hint="@string/email"
         android:inputType="textEmailAddress" />
 
     <EditText
+        android:background="@drawable/edit_text_style"
         android:id="@+id/edtSenha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Senha"
+        android:hint="@string/senha"
         android:inputType="textPassword" />
 
     <Button
+        android:background="@drawable/button_style"
         android:id="@+id/btnLogar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Login"/>
+        android:hint="@string/login"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -38,7 +41,7 @@
         android:layout_marginTop="10dp"
         android:gravity="center"
         android:id="@+id/tvAbreCadastro"
-        android:hint="Não tem cadastro? Clique aqui"
+        android:hint="@string/nao_tem_cadastro"
         android:textSize="15sp"/>
 
 </LinearLayout>

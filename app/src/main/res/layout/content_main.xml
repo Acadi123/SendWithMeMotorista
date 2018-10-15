@@ -24,6 +24,6 @@
         android:id="@+id/btnFazerLogin"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:text="fazer login" />
+        android:text="@string/fazer_login" />
 
 </LinearLayout>
