@@ -71,12 +71,13 @@
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <RadioButton
-                    android:layout_width="wrap_content"
                     android:id="@+id/rbFeminino"
-                    android:hint="@string/feminino"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:checked="true"
-                    android:layout_height="wrap_content" />
+                    android:hint="@string/feminino" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -88,11 +89,11 @@
             </RadioGroup>
 
             <Button
-                android:background="@drawable/button_style"
                 android:id="@+id/btnSalvar"
-                android:hint="@string/salvar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_style"
+                android:hint="@string/salvar" />
 
         </LinearLayout>
 
