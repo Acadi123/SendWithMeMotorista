@@ -1,29 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
     android:layout_marginTop="16dp"
     android:layout_marginRight="16dp"
-    android:layout_marginLeft="16dp"
     android:layout_marginBottom="16dp"
+    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Activity.MainActivity"
-    tools:showIn="@layout/app_bar_main">
+    tools:showIn="@layout/app_bar_main"
+    android:outlineAmbientShadowColor="@color/colorPrimaryDark">
 
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:text="Send With Me Motorista"
+        android:textStyle="bold"
+        android:textSize="30dp" />
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="85dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:src="@mipmap/adicionar" />
 
     <Button
+        android:background="@drawable/button_style"
         android:id="@+id/btnFazerLogin"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="58dp"
         android:text="@string/fazer_login" />
 
 </LinearLayout>
