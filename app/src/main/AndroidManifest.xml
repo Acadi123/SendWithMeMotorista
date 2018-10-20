@@ -3,10 +3,9 @@
     package="projetosendwithmemotorista.sendwithmemotorista">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -26,8 +25,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.LoginActivity" />
-        <activity android:name=".Activity.PrincipalActivity" />
-        <activity android:name=".Activity.CadastroActivity"></activity>
+        <activity android:name=".Activity.CadastroActivity" />
+        <activity
+            android:name=".Activity.PrincipalActivity"
+            android:label="@string/title_activity_principal"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
