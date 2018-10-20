@@ -19,4 +19,5 @@
     <string name="nao_tem_cadastro">Não tem cadastro? Clique aqui</string>
     <string name="fazer_login">Fazer login</string>
     <string name="title_activity_principal">PrincipalActivity</string>
+    <string name="title_activity_mapa">Map</string>
 </resources>
