@@ -20,11 +20,11 @@
         android:id="@+id/textView10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorpreto"
-        android:textStyle="bold"
+        android:text="@string/titulo"
         android:textAlignment="center"
+        android:textColor="@color/colorpreto"
         android:textSize="30dp"
-        android:text="Send With Me Motorista" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView12"

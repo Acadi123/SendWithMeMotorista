@@ -20,4 +20,5 @@
     <string name="fazer_login">Fazer login</string>
     <string name="title_activity_principal">PrincipalActivity</string>
     <string name="title_activity_mapa">Map</string>
+    <string name="titulo">Send With Me Motorista</string>
 </resources>
