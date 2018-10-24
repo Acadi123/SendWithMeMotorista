@@ -43,6 +43,14 @@
 
             <EditText
                 android:background="@drawable/edit_text_style"
+                android:id="@+id/edtCadCpf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Cpf"
+                android:inputType="textCapCharacters"/>
+
+            <EditText
+                android:background="@drawable/edit_text_style"
                 android:id="@+id/edtCadEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

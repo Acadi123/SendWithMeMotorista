@@ -34,6 +34,7 @@ public class CadastroActivity extends AppCompatActivity {
     private EditText edtCadSenha;
     private EditText edtCadConfirmarSenha;
     private EditText edtCadDataNascimento;
+    private EditText edtCadCpf;
     private RadioButton rbMasculino;
     private RadioButton rbFeminino;
     private Button btnSalvar;
@@ -46,6 +47,7 @@ public class CadastroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro);
 
         edtCadEmail = (EditText)findViewById(R.id.edtCadEmail);
+        edtCadCpf = (EditText)findViewById(R.id.edtCadCpf);
         edtCadNome = (EditText)findViewById(R.id.edtCadNome);
         edtCadSobrenome = (EditText)findViewById(R.id.edtCadSobrenome);
         edtCadSenha = (EditText)findViewById(R.id.edtCadSenha);
@@ -64,6 +66,7 @@ public class CadastroActivity extends AppCompatActivity {
                     usuarios = new Usuarios();
                     usuarios.setNome(edtCadNome.getText().toString());
                     usuarios.setEmail(edtCadEmail.getText().toString());
+                    usuarios.setCpf(edtCadCpf.getText().toString());
                     usuarios.setSenha(edtCadSenha.getText().toString());
                     usuarios.setNascimento(edtCadDataNascimento.getText().toString());
                     usuarios.setSobrenome(edtCadSobrenome.getText().toString());
