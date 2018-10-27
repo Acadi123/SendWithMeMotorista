@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/nome"
-                android:inputType="textCapCharacters"/>
+                android:inputType="textPersonName"/>
 
             <EditText
                 android:background="@drawable/edit_text_style"
@@ -31,14 +31,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/sobrenome"
-                android:inputType="textCapCharacters"/>
+                android:inputType="textPersonName"/>
 
             <EditText
                 android:background="@drawable/edit_text_style"
                 android:id="@+id/edtCadDataNascimento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/data_nascimento"
+                android:hint="Data de Nascimento (Dia/Mês/Ano)"
                 android:inputType="date"/>
 
             <EditText
@@ -46,8 +46,8 @@
                 android:id="@+id/edtCadCpf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Cpf"
-                android:inputType="textCapCharacters"/>
+                android:hint="Cpf (Apenas Números)"
+                android:inputType="numberSigned"/>
 
             <EditText
                 android:background="@drawable/edit_text_style"
