@@ -71,6 +71,7 @@ public class CadastroActivity extends AppCompatActivity {
                     usuarios.setNascimento(edtCadDataNascimento.getText().toString());
                     usuarios.setSobrenome(edtCadSobrenome.getText().toString());
 
+
                     if (rbFeminino.isChecked()) {
                         usuarios.setSexo("Feminino");
                     } else {
@@ -116,7 +117,7 @@ public class CadastroActivity extends AppCompatActivity {
                         erroExcecao = "Digite uma senha mais forte! Dica: No minimo 6 caracteres!";
                     } catch (FirebaseAuthInvalidCredentialsException e){
                         erroExcecao = "E-mail digitado inválido! Digite um novo e-mail!";
-                    } catch (FirebaseAuthUserCollisionException e){
+                    } catch (FirebaseAuthUserCollisionException e) {
                         erroExcecao = "E=mail já cadastrado no sistema!";
                     } catch (Exception e){
                         erroExcecao = "Erro ao efetuar o cadastro!";
@@ -135,5 +136,26 @@ public class CadastroActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
+    public boolean validarCampos() {
+        boolean erro = true;
+        if (validarCpf()){
+            erro = false;
+        }
+        return erro;
+    }
+    private boolean validarCpf(){
+        boolean erro = false;
+        String cpfString = edtCadCpf.getText().toString().trim();
+        if (cpfString.isEmpty()) {
+            erro = true;
+            edtCadCpf.setError("Campo em Branco");
+        } else if(cpfString.length() != 11){
+            erro = true;
+            edtCadCpf.setError("Cpf não contém 11 digitos");
+        }else if (!cpfString.matches("[0-9]+")){
+            erro = true;
+            edtCadCpf.setError("Cpf não contém apenas números");
+        }
+        return erro;
+    }
 }
