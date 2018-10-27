@@ -62,7 +62,7 @@ public class CadastroActivity extends AppCompatActivity {
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (edtCadSenha.getText().toString().equals(edtCadConfirmarSenha.getText().toString())){
+                if (edtCadSenha.getText().toString().equals(edtCadConfirmarSenha.getText().toString()) && validarCampos()){
                     usuarios = new Usuarios();
                     usuarios.setNome(edtCadNome.getText().toString());
                     usuarios.setEmail(edtCadEmail.getText().toString());
@@ -81,7 +81,7 @@ public class CadastroActivity extends AppCompatActivity {
                     cadastrarUsuario();
 
                 }else {
-                    Toast.makeText(CadastroActivity.this, "As senhas não são correspondentes", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CadastroActivity.this, "verifique se os campos foram preenchidos corretamente!", Toast.LENGTH_LONG).show();
                 }
             }
         });
