@@ -1,4 +1,4 @@
-package projetosendwithmemotorista.sendwithmemotorista.Activity;
+package projetosendwithmemotorista.sendwithmemotorista.Activity.TelaPrincipalMapa;
 
 import android.Manifest;
 import android.app.Activity;
