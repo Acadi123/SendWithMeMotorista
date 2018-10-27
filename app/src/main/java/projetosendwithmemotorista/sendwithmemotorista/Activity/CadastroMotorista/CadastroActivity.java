@@ -19,6 +19,9 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import projetosendwithmemotorista.sendwithmemotorista.Activity.LoginMotorista.LoginActivity;
 import projetosendwithmemotorista.sendwithmemotorista.DAO.ConfiguracaoFirebase;
 import projetosendwithmemotorista.sendwithmemotorista.Entidades.Usuarios;
@@ -144,8 +147,21 @@ public class CadastroActivity extends AppCompatActivity {
         if (validarNome()){
             erro = false;
         }
-        
-
+        if (validarEmail()){
+            erro = false;
+        }
+        if (validarSobrenome()){
+            erro = false;
+        }
+        if (validarDatadeNascimento()){
+            erro = false;
+        }
+        if (validarSenha()){
+            erro = false;
+        }
+        if (validarConfirmarSenha()){
+            erro = false;
+        }
         return erro;
     }
     private boolean validarCpf(){
@@ -153,13 +169,13 @@ public class CadastroActivity extends AppCompatActivity {
         String cpfString = edtCadCpf.getText().toString().trim();
         if (cpfString.isEmpty()) {
             erro = true;
-            edtCadCpf.setError("Campo em Branco");
+            edtCadCpf.setError("Campo Vazio!");
         } else if(cpfString.length() != 11){
             erro = true;
-            edtCadCpf.setError("Cpf não contém 11 digitos");
+            edtCadCpf.setError("Cpf não contém 11 digitos!");
         }else if (!cpfString.matches("[0-9]+")){
             erro = true;
-            edtCadCpf.setError("Cpf não contém apenas números");
+            edtCadCpf.setError("Cpf não contém apenas números!");
         }
         return erro;
     }
@@ -168,8 +184,63 @@ public class CadastroActivity extends AppCompatActivity {
         String nomeString = edtCadNome.getText().toString().trim();
         if (nomeString.isEmpty()) {
             erro = true;
-            edtCadNome.setError("Campo em Branco");
+            edtCadNome.setError("Campo Vazio!");
         }
         return erro;
     }
+    private boolean validarEmail(){
+        boolean erro = false;
+        String emailString = edtCadEmail.getText().toString().trim();
+        if (emailString.isEmpty()){
+            erro = true;
+            edtCadEmail.setError("Campo Vazio!");
+        }else{
+            String excercao = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
+            Pattern pattern = Pattern.compile(excercao);
+            Matcher matcher = pattern.matcher(emailString);
+
+            if (!matcher.matches()){
+                erro = true;
+                edtCadEmail.setError("Email Inválido!");
+            }
+        }
+        return erro;
+    }
+    private boolean validarSobrenome(){
+        boolean erro = false;
+        String sobrenomeString = edtCadSobrenome.getText().toString().trim();
+        if (sobrenomeString.isEmpty()) {
+            erro = true;
+            edtCadSobrenome.setError("Campo Vazio!");
+        }
+        return erro;
+    }
+    private boolean validarDatadeNascimento(){
+        boolean erro = false;
+        String datanascimentoString = edtCadDataNascimento.getText().toString().trim();
+        if (datanascimentoString.isEmpty()) {
+            erro = true;
+            edtCadDataNascimento.setError("Campo Vazio!");
+        }
+        return erro;
+    }
+    private boolean validarSenha(){
+        boolean erro = false;
+        String senhaString = edtCadSenha.getText().toString().trim();
+        if (senhaString.isEmpty()) {
+            erro = true;
+            edtCadSenha.setError("Campo Vazio!");
+        }
+        return erro;
+    }
+    private boolean validarConfirmarSenha(){
+        boolean erro = false;
+        String confirmasenhaString = edtCadConfirmarSenha.getText().toString().trim();
+        if (confirmasenhaString.isEmpty()) {
+            erro = true;
+            edtCadConfirmarSenha.setError("Campo Vazio!");
+        }
+        return erro;
+    }
+
 }
