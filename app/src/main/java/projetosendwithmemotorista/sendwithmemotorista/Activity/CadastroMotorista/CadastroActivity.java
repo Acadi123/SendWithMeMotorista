@@ -141,6 +141,11 @@ public class CadastroActivity extends AppCompatActivity {
         if (validarCpf()){
             erro = false;
         }
+        if (validarNome()){
+            erro = false;
+        }
+        
+
         return erro;
     }
     private boolean validarCpf(){
@@ -155,6 +160,15 @@ public class CadastroActivity extends AppCompatActivity {
         }else if (!cpfString.matches("[0-9]+")){
             erro = true;
             edtCadCpf.setError("Cpf não contém apenas números");
+        }
+        return erro;
+    }
+    private boolean validarNome(){
+        boolean erro = false;
+        String nomeString = edtCadNome.getText().toString().trim();
+        if (nomeString.isEmpty()) {
+            erro = true;
+            edtCadNome.setError("Campo em Branco");
         }
         return erro;
     }
