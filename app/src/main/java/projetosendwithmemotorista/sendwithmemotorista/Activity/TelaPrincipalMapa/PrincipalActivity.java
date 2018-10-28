@@ -1,5 +1,6 @@
 package projetosendwithmemotorista.sendwithmemotorista.Activity.TelaPrincipalMapa;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import projetosendwithmemotorista.sendwithmemotorista.Activity.TelaPerfil.TelaPerfil;
 import projetosendwithmemotorista.sendwithmemotorista.R;
 
 public class PrincipalActivity extends AppCompatActivity
@@ -95,6 +97,12 @@ public class PrincipalActivity extends AppCompatActivity
             case R.id.AdicionarRota:
 
                 showFragment(new MapaActivity(), "MapaMotorista");
+
+                break;
+            case R.id.EditarPerfil:
+
+                Intent intentAbrirTelaEditarPerfil = new Intent(PrincipalActivity.this, TelaPerfil.class );
+                startActivity(intentAbrirTelaEditarPerfil);
 
                 break;
 

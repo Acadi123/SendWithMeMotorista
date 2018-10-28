@@ -19,6 +19,8 @@ import projetosendwithmemotorista.sendwithmemotorista.Activity.CadastroMotorista
 import projetosendwithmemotorista.sendwithmemotorista.Activity.TelaPrincipalMapa.PrincipalActivity;
 import projetosendwithmemotorista.sendwithmemotorista.DAO.ConfiguracaoFirebase;
 import projetosendwithmemotorista.sendwithmemotorista.Entidades.Usuarios;
+import projetosendwithmemotorista.sendwithmemotorista.Helper.Base64Custom;
+import projetosendwithmemotorista.sendwithmemotorista.Helper.PreferenciasAndroid;
 import projetosendwithmemotorista.sendwithmemotorista.R;
 
 public class LoginActivity extends AppCompatActivity {
@@ -80,6 +82,12 @@ public class LoginActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
 
                     abrirTelaPrincipal();
+                    String identificadorUsuario = Base64Custom.codificarBase64(usuarios.getEmail());
+                    PreferenciasAndroid preferenciasAndroid = new PreferenciasAndroid(LoginActivity.this);
+                    preferenciasAndroid.salvarUsuarioPreferencias(identificadorUsuario, usuarios.getNome());
+                    Toast.makeText(LoginActivity.this, preferenciasAndroid.getIdentificador(), Toast.LENGTH_LONG).show();
+
+
                     Toast.makeText(LoginActivity.this, "Login efetuado com sucesso!", Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(LoginActivity.this, "Usuário ou Senha inválidos!", Toast.LENGTH_SHORT).show();
