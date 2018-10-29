@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import projetosendwithmemotorista.sendwithmemotorista.Activity.LoginMotorista.LoginActivity;
 import projetosendwithmemotorista.sendwithmemotorista.Activity.TelaPerfil.TelaPerfil;
 import projetosendwithmemotorista.sendwithmemotorista.R;
 
@@ -105,6 +106,10 @@ public class PrincipalActivity extends AppCompatActivity
                 startActivity(intentAbrirTelaEditarPerfil);
 
                 break;
+            case R.id.Sair:
+
+                Intent intentAbrirLogin = new Intent(PrincipalActivity.this, LoginActivity.class);
+                startActivity(intentAbrirLogin);
 
         }
 
