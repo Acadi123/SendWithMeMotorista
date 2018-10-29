@@ -14,6 +14,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import projetosendwithmemotorista.sendwithmemotorista.Activity.LoginMotorista.LoginActivity;
 import projetosendwithmemotorista.sendwithmemotorista.Activity.TelaPerfil.TelaPerfil;
 import projetosendwithmemotorista.sendwithmemotorista.R;
@@ -107,14 +109,17 @@ public class PrincipalActivity extends AppCompatActivity
 
                 break;
             case R.id.Sair:
-
-                Intent intentAbrirLogin = new Intent(PrincipalActivity.this, LoginActivity.class);
-                startActivity(intentAbrirLogin);
+                Sair();
 
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    public void Sair() {
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(PrincipalActivity.this, LoginActivity.class));
+        PrincipalActivity.this.finish();
     }
 }
