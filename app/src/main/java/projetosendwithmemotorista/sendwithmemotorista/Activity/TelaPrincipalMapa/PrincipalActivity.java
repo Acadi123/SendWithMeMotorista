@@ -1,5 +1,6 @@
-package projetosendwithmemotorista.sendwithmemotorista.Activity;
+package projetosendwithmemotorista.sendwithmemotorista.Activity.TelaPrincipalMapa;
 
+<<<<<<< HEAD:app/src/main/java/projetosendwithmemotorista/sendwithmemotorista/Activity/PrincipalActivity.java
 import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
@@ -13,6 +14,13 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
+=======
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+>>>>>>> 858512e0cb57c9d5ea03fd249a5e88d9bdc1acd5:app/src/main/java/projetosendwithmemotorista/sendwithmemotorista/Activity/TelaPrincipalMapa/PrincipalActivity.java
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -23,6 +31,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
+import projetosendwithmemotorista.sendwithmemotorista.Activity.LoginMotorista.LoginActivity;
+import projetosendwithmemotorista.sendwithmemotorista.Activity.TelaPerfil.TelaPerfil;
 import projetosendwithmemotorista.sendwithmemotorista.R;
 
 public class PrincipalActivity extends AppCompatActivity
@@ -138,11 +150,24 @@ public class PrincipalActivity extends AppCompatActivity
                 showFragment(new MapaActivity(), "MapaMotorista");
 
                 break;
+            case R.id.EditarPerfil:
+
+                Intent intentAbrirTelaEditarPerfil = new Intent(PrincipalActivity.this, TelaPerfil.class );
+                startActivity(intentAbrirTelaEditarPerfil);
+
+                break;
+            case R.id.Sair:
+                Sair();
 
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    public void Sair() {
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(PrincipalActivity.this, LoginActivity.class));
+        PrincipalActivity.this.finish();
     }
 }
