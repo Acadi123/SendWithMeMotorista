@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -45,13 +46,14 @@ public class TelaPerfil extends AppCompatActivity {
 
     private void setarDadosPerfil() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Usuarios").child(user.getUid());
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("usuario").child(user.getUid());
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Usuarios usuarios = dataSnapshot.getValue(Usuarios.class);
-                nomePerfil.setText(usuarios.getNome());
-                emailPerfil.setText(usuarios.getEmail());
+                Toast.makeText(TelaPerfil.this, (CharSequence) usuarios, Toast.LENGTH_LONG).show();
+                //nomePerfil.setText(usuarios.getNome());
+                //emailPerfil.setText(usuarios.getEmail());
             }
 
             @Override
