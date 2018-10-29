@@ -1,11 +1,17 @@
 package projetosendwithmemotorista.sendwithmemotorista.Activity;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,6 +21,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import projetosendwithmemotorista.sendwithmemotorista.R;
 
@@ -22,6 +29,7 @@ public class PrincipalActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private FragmentManager fragmentManager;
+    private int REQUEST_LOCATION = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +47,41 @@ public class PrincipalActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        checkrequest();
+    }
 
-        transaction.add(R.id.container, new MapaActivity(), "MapaActivity");
-        transaction.commitAllowingStateLoss();
+    //checa se o aparelho permite acessar a localização, se não pede a permissão//
+    private void checkrequest() {
+        if (ContextCompat.checkSelfPermission(PrincipalActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(PrincipalActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
+        }
+        else {
+            fragmentManager = getSupportFragmentManager();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.add(R.id.container, new MapaActivity(), "MapaActivity");
+            transaction.commitAllowingStateLoss();
+        }
+    }
+    //lê o resultado da permissão//
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if(requestCode == REQUEST_LOCATION){
+            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(PrincipalActivity.this,"Permissão concedida!",Toast.LENGTH_LONG);
+                fragmentManager = getSupportFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.add(R.id.container, new MapaActivity(), "MapaActivity");
+                transaction.commitAllowingStateLoss();
+            }
+            else {
+                Toast.makeText(PrincipalActivity.this,"Permissão não concedida! Não sera possível acessar sua localização!",Toast.LENGTH_LONG).show();
+                fragmentManager = getSupportFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.add(R.id.container, new MapaActivity(), "MapaActivity");
+                transaction.commitAllowingStateLoss();
+            }
+        }
     }
 
     @Override

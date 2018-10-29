@@ -30,41 +30,15 @@ public class MapaActivity extends SupportMapFragment implements OnMapReadyCallba
         private LocationManager locationManager;
         private static  final String TAG = "MapaActivity";
         private Context cont;
-        private int REQUEST_LOCATION = 1;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        cont = getActivity();
-        checkrequest();
         getMapAsync(this);
 
     }
 
-    //checa se o aparelho permite acessar a localização, se não pede a permissão//
-    private void checkrequest() {
-        if (ContextCompat.checkSelfPermission(cont, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions((Activity) cont, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
-            }
-            else {
-            getMapAsync(this);
-            Toast.makeText(cont,"Buscando localização atual", Toast.LENGTH_LONG).show();
-        }
-    }
-    //lê o resultado da permissão//
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(requestCode == REQUEST_LOCATION){
-            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                Toast.makeText(cont,"Permissão concedida!",Toast.LENGTH_LONG);
-            }
-            else {
-                Toast.makeText(cont,"Permissão não concedida! Não sera possível acessar sua localização!",Toast.LENGTH_LONG);
-            }
-        }
-    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
