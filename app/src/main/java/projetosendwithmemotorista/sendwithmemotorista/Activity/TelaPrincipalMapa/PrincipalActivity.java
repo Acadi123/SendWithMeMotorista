@@ -1,6 +1,5 @@
 package projetosendwithmemotorista.sendwithmemotorista.Activity.TelaPrincipalMapa;
 
-<<<<<<< HEAD:app/src/main/java/projetosendwithmemotorista/sendwithmemotorista/Activity/PrincipalActivity.java
 import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
@@ -14,13 +13,11 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
-=======
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
->>>>>>> 858512e0cb57c9d5ea03fd249a5e88d9bdc1acd5:app/src/main/java/projetosendwithmemotorista/sendwithmemotorista/Activity/TelaPrincipalMapa/PrincipalActivity.java
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;

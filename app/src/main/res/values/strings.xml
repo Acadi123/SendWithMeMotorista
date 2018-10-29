@@ -11,6 +11,7 @@
     <string name="data_nascimento">Data de Nascimento</string>
     <string name="email">Email</string>
     <string name="senha">Senha</string>
+    <string name="cpf">CPF</string>
     <string name="confirmar_senha">Confirma Senha</string>
     <string name="feminino">Feminino</string>
     <string name="masculino">Masculino</string>

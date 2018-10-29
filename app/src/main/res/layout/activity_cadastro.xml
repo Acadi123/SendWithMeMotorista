@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-=======
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
->>>>>>> 858512e0cb57c9d5ea03fd249a5e88d9bdc1acd5
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,12 +8,11 @@
     android:orientation="vertical"
     tools:context=".Activity.CadastroMotorista.CadastroActivity">
 
-<<<<<<< HEAD
     <EditText
         android:id="@+id/edtCadNome"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="70dp"
         android:background="@drawable/edit_text_style"
         android:hint="@string/nome"
         android:inputType="textCapCharacters"
@@ -38,6 +33,18 @@
         app:layout_constraintTop_toBottomOf="@+id/edtCadNome" />
 
     <EditText
+        android:id="@+id/edtCadCpf"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/edit_text_style"
+        android:hint="@string/cpf"
+        android:inputType="textCapCharacters"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtCadSobrenome" />
+
+    <EditText
         android:id="@+id/edtCadDataNascimento"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
@@ -47,7 +54,7 @@
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtCadSobrenome" />
+        app:layout_constraintTop_toBottomOf="@+id/edtCadCpf" />
 
     <EditText
         android:id="@+id/edtCadEmail"
@@ -129,106 +136,4 @@
         app:layout_constraintTop_toBottomOf="@+id/rbFeminino" />
 
 </android.support.constraint.ConstraintLayout>
-=======
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:background="@drawable/edit_text_style"
-                android:id="@+id/edtCadNome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/nome"
-                android:inputType="textPersonName"/>
-
-            <EditText
-                android:background="@drawable/edit_text_style"
-                android:id="@+id/edtCadSobrenome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/sobrenome"
-                android:inputType="textPersonName"/>
-
-            <EditText
-                android:background="@drawable/edit_text_style"
-                android:id="@+id/edtCadDataNascimento"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Data de Nascimento (Dia/Mês/Ano)"
-                android:inputType="date"/>
-
-            <EditText
-                android:background="@drawable/edit_text_style"
-                android:id="@+id/edtCadCpf"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Cpf (Apenas Números)"
-                android:inputType="numberSigned"/>
-
-            <EditText
-                android:background="@drawable/edit_text_style"
-                android:id="@+id/edtCadEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/email"
-                android:inputType="textEmailAddress"/>
-
-            <EditText
-                android:background="@drawable/edit_text_style"
-                android:id="@+id/edtCadSenha"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/senha"
-                android:inputType="textPassword"/>
-
-            <EditText
-                android:background="@drawable/edit_text_style"
-                android:id="@+id/edtCadConfirmarSenha"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/confirmar_senha"
-                android:inputType="textPassword"/>
-
-            <RadioGroup
-                android:id="@+id/rgSexo"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <RadioButton
-                    android:id="@+id/rbFeminino"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:hint="@string/feminino" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:id="@+id/rbMasculino"
-                    android:hint="@string/masculino"
-                    android:checked="true"
-                    android:layout_height="wrap_content" />
-
-            </RadioGroup>
-
-            <Button
-                android:id="@+id/btnSalvar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button_style"
-                android:hint="@string/salvar" />
-
-        </LinearLayout>
-
-    </ScrollView>
-
-</RelativeLayout>
->>>>>>> 858512e0cb57c9d5ea03fd249a5e88d9bdc1acd5
