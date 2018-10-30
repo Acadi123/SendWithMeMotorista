@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import projetosendwithmemotorista.sendwithmemotorista.Entidades.Usuarios;
+import projetosendwithmemotorista.sendwithmemotorista.Helper.PreferenciasAndroid;
 import projetosendwithmemotorista.sendwithmemotorista.R;
 
 public class TelaPerfil extends AppCompatActivity {
@@ -31,7 +32,6 @@ public class TelaPerfil extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_perfil);
-        setView();
         setarDadosPerfil();
 
         btnExcluirConta = (Button) findViewById(R.id.EditarPerfil);
@@ -44,16 +44,19 @@ public class TelaPerfil extends AppCompatActivity {
         });
     }
 
+
+
     private void setarDadosPerfil() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("usuario").child(user.getUid());
+
+        PreferenciasAndroid preferenciasAndroid = new PreferenciasAndroid(TelaPerfil.this);
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("usuario").child(preferenciasAndroid.getIdentificador());
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Usuarios usuarios = dataSnapshot.getValue(Usuarios.class);
-                Toast.makeText(TelaPerfil.this, (CharSequence) usuarios, Toast.LENGTH_LONG).show();
-                //nomePerfil.setText(usuarios.getNome());
-                //emailPerfil.setText(usuarios.getEmail());
+              Usuarios usuarios = dataSnapshot.getValue(Usuarios.class);
+              setView();
+              nomePerfil.setText(usuarios.getNome());
+              emailPerfil.setText(usuarios.getEmail());
             }
 
             @Override
@@ -61,10 +64,12 @@ public class TelaPerfil extends AppCompatActivity {
 
             }
         });
+
     }
 
     private void setView() {
         nomePerfil = findViewById(R.id.nomePerfilId);
         emailPerfil = findViewById(R.id.emailPerfilId);
     }
+
 }
