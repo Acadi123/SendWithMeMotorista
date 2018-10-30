@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import projetosendwithmemotorista.sendwithmemotorista.Activity.TelaPrincipalMapa.PrincipalActivity;
 import projetosendwithmemotorista.sendwithmemotorista.Entidades.Usuarios;
 import projetosendwithmemotorista.sendwithmemotorista.Helper.PreferenciasAndroid;
 import projetosendwithmemotorista.sendwithmemotorista.R;
@@ -26,10 +27,13 @@ public class TelaPerfil extends AppCompatActivity {
     private Button btnExcluirConta;
     private TextView nomePerfil;
     private TextView emailPerfil;
+    private TextView cpfPerfil;
+    private TextView dataPerfil;
+    private Button voltaMapa;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_perfil);
         setarDadosPerfil();
@@ -40,6 +44,14 @@ public class TelaPerfil extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intentAbrirTelaPrincipal = new Intent(TelaPerfil.this, EditarPerfil.class);
                 startActivity(intentAbrirTelaPrincipal);
+            }
+        });
+        voltaMapa = (Button) findViewById(R.id.voltaMapa);
+        voltaMapa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentvoltaMapa = new Intent(TelaPerfil.this, PrincipalActivity.class);
+                startActivity(intentvoltaMapa);
             }
         });
     }
@@ -57,6 +69,8 @@ public class TelaPerfil extends AppCompatActivity {
               setView();
               nomePerfil.setText(usuarios.getNome());
               emailPerfil.setText(usuarios.getEmail());
+              cpfPerfil.setText(usuarios.getCpf());
+              dataPerfil.setText(usuarios.getNascimento());
             }
 
             @Override
@@ -70,6 +84,9 @@ public class TelaPerfil extends AppCompatActivity {
     private void setView() {
         nomePerfil = findViewById(R.id.nomePerfilId);
         emailPerfil = findViewById(R.id.emailPerfilId);
+        cpfPerfil = findViewById(R.id.cpfPerfilId);
+        dataPerfil = findViewById(R.id.dataPerfilId);
+
     }
 
 }
