@@ -26,6 +26,7 @@ public class EditarPerfil extends AppCompatActivity {
     private Usuarios usuarios;
     private TextView nome;
     private DatabaseReference databaseReference;
+    private Button voltaPerfil;
 
 
 
@@ -49,6 +50,15 @@ public class EditarPerfil extends AppCompatActivity {
             }
 
 
+        });
+
+        voltaPerfil = (Button) findViewById(R.id.voltaPerfil);
+        voltaPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentvoltaPerfil = new Intent(EditarPerfil.this, TelaPerfil.class);
+                startActivity(intentvoltaPerfil);
+            }
         });
 
     }
