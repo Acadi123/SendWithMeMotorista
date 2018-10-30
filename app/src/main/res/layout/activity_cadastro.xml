@@ -15,7 +15,7 @@
         android:layout_marginTop="70dp"
         android:background="@drawable/edit_text_style"
         android:hint="@string/nome"
-        android:inputType="textCapCharacters"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,7 +27,7 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/edit_text_style"
         android:hint="@string/sobrenome"
-        android:inputType="textCapCharacters"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtCadNome" />
@@ -39,7 +39,7 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/edit_text_style"
         android:hint="@string/cpf"
-        android:inputType="textCapCharacters"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtCadSobrenome" />
