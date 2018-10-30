@@ -103,13 +103,13 @@ public class LoginActivity extends AppCompatActivity {
     public void abrirTelaPrincipal(){
         Intent intentAbrirTelaPrincipal = new Intent(LoginActivity.this, PrincipalActivity.class);
         startActivity(intentAbrirTelaPrincipal);
-        overridePendingTransition(R.anim.botton_in, R.anim.top_out);
+        overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
 
     }
 
     public void abreCadastroUsuario(){
         Intent intent = new Intent(LoginActivity.this, CadastroActivity.class);
         startActivity(intent);
-        overridePendingTransition(R.anim.botton_in, R.anim.top_out);
+        overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
     }
 }
