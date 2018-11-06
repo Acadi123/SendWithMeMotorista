@@ -3,6 +3,7 @@ package projetosendwithmemotorista.sendwithmemotorista.Activity.TelaPrincipalMap
 import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -26,9 +27,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import projetosendwithmemotorista.sendwithmemotorista.Activity.LoginMotorista.LoginActivity;
 import projetosendwithmemotorista.sendwithmemotorista.Activity.TelaPerfil.TelaPerfil;
@@ -39,6 +47,14 @@ public class PrincipalActivity extends AppCompatActivity
 
     private FragmentManager fragmentManager;
     private int REQUEST_LOCATION = 1;
+
+    private TextView nomeUsuario;
+    private TextView emailUsuario;
+    private FirebaseAuth mAuth;
+    private DatabaseReference dataBaseReferencia = FirebaseDatabase.getInstance().getReference();
+    private DatabaseReference usuarioReferencia = dataBaseReferencia.child("Usuarios");
+    private DatabaseReference usuarioReferencia2;
+    private View hView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +71,28 @@ public class PrincipalActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        hView = navigationView.getHeaderView(0);
 
         checkrequest();
+        setFragmentoPadrao();
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED ||
+
+                    ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+
+                String[] permissoes = {Manifest.permission.INTERNET, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+
+                requestPermissions(permissoes, 1);
+
+            }
+        }
     }
+
+
+
 
     //checa se o aparelho permite acessar a localização, se não pede a permissão//
     private void checkrequest() {
@@ -67,12 +102,10 @@ public class PrincipalActivity extends AppCompatActivity
         else {
             fragmentManager = getSupportFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.add(R.id.container, new MapaActivity(), "MapaActivity");
-            transaction.commitAllowingStateLoss();
+            //map set aq
         }
     }
     //lê o resultado da permissão//
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if(requestCode == REQUEST_LOCATION){
@@ -80,27 +113,26 @@ public class PrincipalActivity extends AppCompatActivity
                 Toast.makeText(PrincipalActivity.this,"Permissão concedida!",Toast.LENGTH_LONG);
                 fragmentManager = getSupportFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.add(R.id.container, new MapaActivity(), "MapaActivity");
-                transaction.commitAllowingStateLoss();
+// map set aq
+
             }
             else {
                 Toast.makeText(PrincipalActivity.this,"Permissão não concedida! Não sera possível acessar sua localização!",Toast.LENGTH_LONG).show();
                 fragmentManager = getSupportFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.add(R.id.container, new MapaActivity(), "MapaActivity");
-                transaction.commitAllowingStateLoss();
+                //map set aqq
             }
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+    private void setFragmentoPadrao() {
+        fragmentManager = getSupportFragmentManager(); //setou
+
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+
+        transaction.add(R.id.containermap, new MapFragment(), "MapsFragment");
+
+        transaction.commitAllowingStateLoss();
     }
 
     @Override
@@ -109,7 +141,6 @@ public class PrincipalActivity extends AppCompatActivity
         getMenuInflater().inflate(R.menu.principal, menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -124,17 +155,6 @@ public class PrincipalActivity extends AppCompatActivity
 
         return super.onOptionsItemSelected(item);
     }
-
-    private void showFragment(Fragment fragment, String name){
-
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-
-        transaction.replace(R.id.container, fragment, name);
-        transaction.commit();
-
-
-
-    }
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -143,8 +163,6 @@ public class PrincipalActivity extends AppCompatActivity
 
         switch (id){
             case R.id.AdicionarRota:
-
-                showFragment(new MapaActivity(), "MapaMotorista");
 
                 break;
             case R.id.EditarPerfil:

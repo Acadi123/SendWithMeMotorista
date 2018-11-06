@@ -32,6 +32,13 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:16.0.0'
     implementation 'com.github.jd-alexander:library:1.1.0'
     implementation 'com.android.support:cardview-v7:28.0.0'
+    
+    //tutorial do site de emanoel
+    implementation 'com.github.MKergall:osmbonuspack:6.5.2'
+
+}
+repositories {
+    maven { url "https://jitpack.io" }
 }
 
 apply plugin: 'com.google.gms.google-services'
