@@ -42,6 +42,9 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+        <activity
+            android:name=".Activity.TelaPrincipalMapa.MapaActivity"
+            android:label="@string/title_activity_mapa" />
         <activity android:name=".Activity.TelaPerfil.TelaPerfil" />
         <activity android:name=".Activity.TelaPerfil.EditarPerfil"></activity>
     </application>

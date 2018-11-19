@@ -3,11 +3,15 @@ package projetosendwithmemotorista.sendwithmemotorista.Activity.LoginMotorista;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Button;
 
 import projetosendwithmemotorista.sendwithmemotorista.R;
 
 public class MainActivity extends AppCompatActivity{
+
+    private Button btnAbrirActivityLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
