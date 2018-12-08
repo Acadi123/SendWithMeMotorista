@@ -3,7 +3,6 @@ package projetosendwithmemotorista.sendwithmemotorista.Activity.TelaPerfil;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,8 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import projetosendwithmemotorista.sendwithmemotorista.Activity.LoginMotorista.LoginActivity;
-import projetosendwithmemotorista.sendwithmemotorista.Activity.TelaPrincipal.PrincipalActivity2;
-import projetosendwithmemotorista.sendwithmemotorista.Activity.TelaPrincipalMapa.PrincipalActivity;
+import projetosendwithmemotorista.sendwithmemotorista.Activity.Viagens.TelaInicial;
 import projetosendwithmemotorista.sendwithmemotorista.Entidades.Usuarios;
 import projetosendwithmemotorista.sendwithmemotorista.Helper.PreferenciasAndroid;
 import projetosendwithmemotorista.sendwithmemotorista.R;
@@ -62,8 +60,9 @@ public class TelaPerfil extends AppCompatActivity {
         voltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentvoltaMapa = new Intent(TelaPerfil.this, PrincipalActivity2.class);
-                startActivity(intentvoltaMapa);
+                Intent intentvolta = new Intent(TelaPerfil.this, TelaInicial.class);
+                startActivity(intentvolta);
+                TelaPerfil.this.finish();
             }
         });
     }
@@ -121,7 +120,7 @@ public class TelaPerfil extends AppCompatActivity {
                 Button buttonConfirmar = alertview.findViewById(R.id.bttEdicao);
                 Button buttonCancelar = alertview.findViewById(R.id.bttCancelarEdicao);
 
-                alertTitulo.setText("Digite um novo Nome: ");
+                alertTitulo.setText("Digite um novo nome: ");
                 buttonConfirmar.setText("Editar");
                 buttonCancelar.setText("Cancelar");
                 alertDialog.setView(alertview);
@@ -177,7 +176,7 @@ public class TelaPerfil extends AppCompatActivity {
                 Button buttonConfirmar = alertview.findViewById(R.id.bttEdicao);
                 Button buttonCancelar = alertview.findViewById(R.id.bttCancelarEdicao);
 
-                alertTitulo.setText("Digite um novo Sobrenome: ");
+                alertTitulo.setText("Digite um novo sobrenome: ");
                 buttonConfirmar.setText("Editar");
                 buttonCancelar.setText("Cancelar");
                 alertDialog.setView(alertview);
@@ -399,5 +398,8 @@ public class TelaPerfil extends AppCompatActivity {
         });
 
     }
+
+
+
 
 }

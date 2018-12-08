@@ -16,12 +16,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import projetosendwithmemotorista.sendwithmemotorista.Activity.CadastroMotorista.CadastroActivity;
-import projetosendwithmemotorista.sendwithmemotorista.Activity.TelaPrincipal.PrincipalActivity2;
+import projetosendwithmemotorista.sendwithmemotorista.Activity.Viagens.TelaInicial;
 import projetosendwithmemotorista.sendwithmemotorista.DAO.ConfiguracaoFirebase;
 import projetosendwithmemotorista.sendwithmemotorista.Entidades.Usuarios;
 import projetosendwithmemotorista.sendwithmemotorista.Helper.Base64Custom;
 import projetosendwithmemotorista.sendwithmemotorista.Helper.PreferenciasAndroid;
-import projetosendwithmemotorista.sendwithmemotorista.Activity.TelaPrincipal.PrincipalActivity2;
 import projetosendwithmemotorista.sendwithmemotorista.R;
 
 public class LoginActivity extends AppCompatActivity {
@@ -32,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnLogar;
     private FirebaseAuth autenticacao;
     private Usuarios usuarios;
+    private TextView callReset;
 
 
 
@@ -44,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         edtEmail = (EditText) findViewById(R.id.edtEmail);
         edtSenha = (EditText) findViewById(R.id.edtSenha);
         tvAbreCadastro = (TextView) findViewById(R.id.tvAbreCadastro);
+        callReset = (TextView) findViewById(R.id.callReset);
         btnLogar = (Button) findViewById(R.id.btnLogar);
 
         btnLogar.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +71,12 @@ public class LoginActivity extends AppCompatActivity {
                 abreCadastroUsuario();
             }
         });
+        callReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callReset();
+            }
+        });
 
     }
 
@@ -86,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
                     String identificadorUsuario = Base64Custom.codificarBase64(usuarios.getEmail());
                     PreferenciasAndroid preferenciasAndroid = new PreferenciasAndroid(LoginActivity.this);
                     preferenciasAndroid.salvarUsuarioPreferencias(identificadorUsuario, usuarios.getNome());
-                    Toast.makeText(LoginActivity.this, preferenciasAndroid.getIdentificador(), Toast.LENGTH_LONG).show();
+
 
 
                     Toast.makeText(LoginActivity.this, "Login efetuado com sucesso!", Toast.LENGTH_SHORT).show();
@@ -102,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void abrirTelaPrincipal(){
-        Intent intentAbrirTelaPrincipal = new Intent(LoginActivity.this, PrincipalActivity2.class);
+        Intent intentAbrirTelaPrincipal = new Intent(LoginActivity.this, TelaInicial.class);
         startActivity(intentAbrirTelaPrincipal);
         overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
 
@@ -112,5 +119,10 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(LoginActivity.this, CadastroActivity.class);
         startActivity(intent);
         overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+    }
+
+    public void callReset(){
+        Intent intent = new Intent(this, ResetActivity.class);
+        startActivity(intent);
     }
 }
